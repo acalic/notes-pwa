@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+		<title>Notes PWA</title>
+		<link rel="manifest" href="manifest.json">
+
+		<!-- Older Chrome configuration -->
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="application-name" content="Notes">
+		<link rel="icon" sizes="192x192" href="bower_components/note-app-elements/images/icon-4x.png">
+		
+		<script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+		<script src="bower_components/web-animations-js/web-animations.min.js"></script>
+
+		<link rel="import" href="bower_components/polymer/polymer.html">
+
+		<!-- <link rel="import" href="bower_components/platinum-sw/platinum-sw-elements.html"> -->
+		<link rel="import" href="bower_components/polymerfire/firebase-app.html">
+		<link rel="import" href="note-app.html">
+
+		<style>
+			body {
+				margin: 0;
+			}
+		</style>
+	</head>
+	<body>
+
+		<platinum-sw-register
+		auto-register
+		skip-waiting
+		clients-claim
+		reload-on-install
+		href="sw-import.js">
+			<platinum-sw-cache
+				default-cache-strategy="networkFirst">
+			</platinum-sw-cache>
+		</platinum-sw-register>
+
+		<firebase-app
+			name="notes-pwa"
+			api-key="AIzaSyCICQm0Rkrc9_LcsokMD_f7ZZVwEs5hsK8"
+			auth-domain="notes-pwa-88008.firebaseapp.com"
+			database-url="https://notes-pwa-88008.firebaseio.com">
+		</firebase-app>
+
+		<note-app></note-app>
+
+	</body>
+</html>
